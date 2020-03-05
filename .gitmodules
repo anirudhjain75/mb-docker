@@ -1,0 +1,3 @@
+[submodule "musicbrainz-server"]
+	path = musicbrainz-server
+	url = https://github.com/anirudhjain75/musicbrainz-server

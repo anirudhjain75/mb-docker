@@ -1,0 +1,36 @@
+FROM ubuntu:18.04
+
+ARG POSTGRES_VERSION=10
+
+RUN ls
+WORKDIR /musicbrainz
+RUN ls -a
+
+RUN apt-get update
+RUN apt-get install \
+    postgresql-$POSTGRES_VERSION \
+    postgresql-contrib-$POSTGRES_VERSION \
+    postgresql-server-dev-$POSTGRES_VERSION -y
+
+RUN apt-get install git -y
+RUN apt-get install redis-server -y
+RUN apt-get install nodejs -y
+RUN apt-get install gnupg -y
+RUN apt-get install curl -y
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && apt install yarn -y
+RUN apt-get install build-essential -y
+RUN apt-get install \
+    libdb-dev \
+    libexpat1-dev \
+    libicu-dev \
+    liblocal-lib-perl \
+    libpq-dev \
+    libxml2 \
+    libxml2-dev \
+    cpanminus \
+    pkg-config -y
+
+RUN perl -Mlocal::lib
+
+WORKDIR /musicbrainz
