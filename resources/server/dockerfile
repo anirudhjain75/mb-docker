@@ -1,10 +1,6 @@
-FROM ubuntu:18.04
+FROM ubuntu:16.04
 
-ARG POSTGRES_VERSION=10
-
-RUN ls
-WORKDIR /musicbrainz
-RUN ls -a
+ARG POSTGRES_VERSION=9.5
 
 RUN apt-get update
 RUN apt-get install \
@@ -14,12 +10,16 @@ RUN apt-get install \
 
 RUN apt-get install git -y
 RUN apt-get install redis-server -y
+RUN apt-get install build-essential curl -y
+
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get install nodejs -y
+
 RUN apt-get install gnupg -y
-RUN apt-get install curl -y
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-RUN apt-get update && apt install yarn -y
-RUN apt-get install build-essential -y
+RUN apt-get install apt-transport-https
+
+RUN npm install -g yarn
+
 RUN apt-get install \
     libdb-dev \
     libexpat1-dev \

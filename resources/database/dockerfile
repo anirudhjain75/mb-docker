@@ -1,4 +1,4 @@
-FROM postgres:10
+FROM postgres:9.5
 
 ENV POSTGRES_HOST_AUTH_METHOD=trust
 
@@ -6,9 +6,9 @@ RUN apt-get update
 RUN apt-get install git-core -y
 RUN apt-get install build-essential -y
 RUN apt-get install \
-    postgresql-10 \
-    postgresql-contrib-10 \
-    postgresql-server-dev-10 -y
+    postgresql-9.5 \
+    postgresql-contrib-9.5 \
+    postgresql-server-dev-9.5 -y
 RUN apt-get install \
     libicu-dev \
     pkg-config -y
