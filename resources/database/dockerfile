@@ -6,15 +6,15 @@ RUN apt-get update
 RUN apt-get install git-core -y
 RUN apt-get install build-essential -y
 RUN apt-get install \
-    postgresql-9.5 \
-    postgresql-contrib-9.5 \
     postgresql-server-dev-9.5 -y
 RUN apt-get install \
     libicu-dev \
     pkg-config -y
 RUN git clone https://github.com/metabrainz/postgresql-musicbrainz-collate
 RUN git clone https://github.com/metabrainz/postgresql-musicbrainz-unaccent
+
 WORKDIR /postgresql-musicbrainz-unaccent
 RUN make && make install
+
 WORKDIR /postgresql-musicbrainz-collate
 RUN make && make install
