@@ -1,1 +1,0 @@
-eval $( perl -Mlocal::lib )
