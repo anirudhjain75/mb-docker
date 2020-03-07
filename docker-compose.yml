@@ -35,6 +35,3 @@ services:
 
 networks:
     MBNet:
-
-volumes:
-    db-data:
